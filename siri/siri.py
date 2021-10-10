@@ -12,12 +12,10 @@ from config import Config
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 
-BUTTON1="📜 Source Code 📜"
-B2="telegram.dog/shamilhabeeb"
-OWNER="Owner"
-GITCLONE="github.com/shamilhabeebnelli/song-bot"
 ABS="Developer"
-APPER="shamilhabeeb"
+APPER="අකාශ් හසේන්ද්‍ර 🤵"
+OWNER="Owner"
+B2="telegram.dog/Legend000001"
 
 @Client.on_message(filters.command('start') & filters.private)
 async def start(client, message):
@@ -25,7 +23,7 @@ async def start(client, message):
          reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton(BUTTON1, url=GITCLONE)
+                    
                  ],[
                     InlineKeyboardButton(OWNER, url=f"https://telegram.dog/{Config.OWNER}"),
                     InlineKeyboardButton(ABS, url=B2)
@@ -69,28 +67,28 @@ def a(client, message):
             #     m.edit("Exceeded 30mins cap")
             #     return
 
-            performer = f"[SmL\MwK 🇮🇳]" 
+            performer = f"[Akash 🇱🇰]" 
             thumb_name = f'thumb{message.message_id}.jpg'
             thumb = requests.get(thumbnail, allow_redirects=True)
             open(thumb_name, 'wb').write(thumb.content)
 
         except Exception as e:
             print(e)
-            m.edit('**👎 Nothing to found 🥺 Try with another!**')
+            m.edit('**👎 නෑ වගේ ඉන්න වෙන තැනක තියනවද බලමු හැබැයි නැතිවෙන්නත් පුලුවන් 😂 !**')
             return
     except Exception as e:
         m.edit(
-            "**found nothing, please try again**"
+            "**නෑමයි ,අය පස්සේ බලමු 🔴**"
         )
         print(str(e))
         return
-    m.edit("**m.youtube.com responded, uploading...**")
+    m.edit("**Searching...🔎 අපි තමයි හොදටම කෙරුවේ 😇 Uploading... 👇**")
     try:
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        rep = f'🎶 <b>Title:</b> <a href="{link}">{title}</a>\n⌚ <b>Duration:</b> <code>{duration}</code>\n📻 <b>Uploaded By:</b> <a href="https://t.me/mwklinks">[MwK] Song-Bot</a>'
+        rep = f'🎶 <b>Title:</b> <a href="{link}">{title}</a>\n⌚ <b>Duration:</b> <code>{duration}</code>\n📻 <b>📥 Uploaded By:</b> <a href="https://t.me/publictechno">public Techno Music Bot</a>'
         secmul, dur, dur_arr = 1, 0, duration.split(':')
         for i in range(len(dur_arr)-1, -1, -1):
             dur += (int(dur_arr[i]) * secmul)
@@ -98,7 +96,7 @@ def a(client, message):
         message.reply_audio(audio_file, caption=rep, parse_mode='HTML',quote=False, title=title, duration=dur, performer=performer, thumb=thumb_name)
         m.delete()
     except Exception as e:
-        m.edit('**An Internal error occured; Report This @redbullfed!!**')
+        m.edit('**හරිනේ කැඩුවා නේද 🥺, Report Error @Legend000001!!**')
         print(e)
     try:
         os.remove(audio_file)
